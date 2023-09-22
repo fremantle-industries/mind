@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euo pipefail
+
+green=`tput setaf 2`
+reset=`tput sgr0`
+
+K3D_CLUSTERS=$(k3d cluster list)
+if [[ "$K3D_CLUSTERS" == *"mind"* ]]; then
+  echo "${green}k3d cluster mind is running${reset}"
+else
+  k3d cluster create mind \
+    --image rancher/k3s:v1.27.4-k3s1 \
+    --registry-use k3d-mind-registry.127.0.0.1.nip.io:5100 \
+    --registry-config .config/k3d/registry.yaml \
+    --api-port 6550 \
+    --port "80:80@loadbalancer" \
+    --port "443:443@loadbalancer" \
+    --agents 3
+fi

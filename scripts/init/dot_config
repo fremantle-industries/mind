@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+mkdir -p .config/k3d
+cp ./templates/dot_config/k3d/registry.yaml .config/k3d/registry.yaml

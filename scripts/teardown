@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+./scripts/k3d/cluster_delete
+./scripts/k3d/registry_delete

@@ -1,0 +1,9 @@
+apiVersion: cluster.redpanda.com/v1alpha1
+kind: Redpanda
+metadata:
+  name: mind
+  namespace: redpanda
+spec:
+  chartRef:
+    chartVersion: ">4.0.0"
+  clusterSpec: {}

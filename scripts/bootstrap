@@ -1,0 +1,19 @@
+#!/bin/bash
+set -euo pipefail
+
+install_nix()
+{
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+}
+
+green=`tput setaf 2`
+reset=`tput sgr0`
+
+# install nix if it's not currently installed and activated
+NIX_VERSION=$(nix --version)
+if [ $? -eq 0 ]; then
+  echo "${green}nix is already installed version=[$NIX_VERSION]${reset}"
+else
+  install_nix
+fi

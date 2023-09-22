@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+green=`tput setaf 2`
+reset=`tput sgr0`
+
+K3D_REGISTRY=$(k3d registry list)
+if [[ "$K3D_REGISTRY" == *"mind-registry"* ]]; then
+  echo "${green}k3d registry mind-registry is running${reset}"
+else
+  k3d registry create mind-registry.127.0.0.1.nip.io --port 5100
+fi

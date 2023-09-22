@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+./scripts/init/dot_config
+./scripts/init/helmfile_plugins
+./scripts/k3d/registry_create
+./scripts/k3d/cluster_create
+./scripts/apply

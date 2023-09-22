@@ -1,0 +1,52 @@
+repositories:
+  # minio
+  - name: minio
+    url: git+https://github.com/minio/operator@helm?ref=master
+  # dagster
+  - name: dagster
+    url: https://dagster-io.github.io/helm
+  # cert manager
+  - name: jetstack
+    url: https://charts.jetstack.io
+  # redpanda
+  - name: redpanda
+    url: https://charts.redpanda.com
+  # observability
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
+
+releases:
+  # minio
+  - name: minio-operator
+    namespace: minio-operator
+    createNamespace: true
+    chart: minio/operator
+  # TODO:
+  # - figure out why the tenant doesn't work???
+  # - name: minio-tenant
+  #   namespace: minio-tenant
+  #   createNamespace: true
+  #   chart: minio/tenant
+  # dagster
+  - name: dagster
+    namespace: dagster
+    createNamespace: true
+    chart: dagster/dagster
+  # cert manager
+  - name: cert-manager
+    namespace: cert-manager
+    createNamespace: true
+    chart: jetstack/cert-manager
+    set:
+      - name: installCRDs
+        value: true
+  # redpanda
+  - name: redpanda-operator
+    namespace: redpanda
+    createNamespace: true
+    chart: redpanda/operator
+  # observability
+  - name: grafana
+    namespace: observability
+    createNamespace: true
+    chart: grafana/grafana

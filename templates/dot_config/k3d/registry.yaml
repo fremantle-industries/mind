@@ -1,0 +1,4 @@
+mirrors:
+  docker.io:
+    endpoint:
+      - http://k3d-mind.127.0.0.1.nip.io:5100

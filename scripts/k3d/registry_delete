@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+k3d registry delete k3d-mind-registry.127.0.0.1.nip.io
